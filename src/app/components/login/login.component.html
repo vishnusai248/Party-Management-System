@@ -1,0 +1,58 @@
+
+<div class="d-flex justify-content-center h-100 align-items-center bgcolor">
+    <div class="content_div" style="width:35%">
+      <!-- <img class="logo" src="" alt="logo" /> -->
+      
+      <h4 class="text-center">Login</h4>
+      <form class="mt-2" [formGroup]="loginForm">
+        <div class="input_field mb-3">
+          <label class="form-label mt-2">Username</label><br />
+          <input
+           (focus)="erroroccured=false"
+            class="form-control "
+            type="email"
+            placeholder="Enter Username"
+            formControlName="userName"
+          />
+          <div *ngIf="f.userName.errors && (f.userName.dirty || f.userName.touched || isSubmitted)"
+              class="error-message">
+              <div *ngIf="f.userName.errors.required">Username cannot be blank</div>
+            </div>
+        </div>
+  
+        <div class="input_field">
+          <label class="form-label mt-2">Password</label><br />
+          <div style="position: relative;">
+            <input [type]="hide ? 'password' : 'text'" formControlName="loginPassword" id="pword" placeholder="Enter Password"
+            (focus)="erroroccured=false"  class="form-control" minlength="8" maxlength="15" />
+            <mat-icon class="visibility-icon eyeicon" id="v-icon" (click)="eyefunction()" *ngIf="f.loginPassword.dirty">
+              {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </div>
+          <div class="error-message"
+            *ngIf="f.loginPassword.errors && (f.loginPassword.dirty || f.loginPassword.touched || isSubmitted) "
+            id="fnmae-error" class="error-message">
+            <div *ngIf="f.loginPassword.errors.required">
+              Password is required
+            </div>
+            <div *ngIf="f.loginPassword.errors.pattern">
+              Password must be atleast 8 characters, maximum of 15 characters and should have 1 Uppercase,
+              1Lowercase, 1 number and 1 special character(!,@,$,%,^,&,-)
+            </div>
+          </div>
+          
+  
+        </div>
+        <div class="error mt-2" *ngIf="erroroccured">
+          <div class="woops mb-2">Woops !</div>
+          <div>{{errormessege}}</div>
+        </div>
+        
+        <div class="mt-4">
+          <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid" (click)="Login()"
+          [disabled]="loginForm.invalid">Login</button>
+        </div>
+        
+      </form>
+      </div>
+    </div>
+  

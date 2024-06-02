@@ -1,0 +1,56 @@
+<div class="homepage h-100">
+    <div class="d-flex justify-content-between align-items-center header px-2">
+        <h1 class="title">Party Management</h1>
+        <div class="headerright">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Hi {{name}} <span class="exclamation">!</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li class="d-flex justify-content-center"><a class="dropdown-item text-center"
+                            (click)="logout()">Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="dashboard h-100">
+        <div class="d-flex flex-column justify-content-between align-items-center p-5">
+            <button class="btn btn-primary mb-3" (click)="openparty('','add')">Add Party</button>
+            <table class="table table-bordered table-striped">
+                <thead class="">
+                    <tr>
+                        <th class="w-10">ID</th>
+                        <th class="w-30">Name</th>
+                        <th class="w-30">Contact</th>
+                        <th class="w-30">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let party of parties">
+                        <td class="w-10">{{ party.id }}</td>
+                        <td class="w-30">{{ party.name }}</td>
+                        <td class="w-30 ">
+                            <div class="d-flex flex-column">
+
+                                <p class="m-0">{{party.email}}</p>
+                                <p class="m-0">{{party.mobile_no}}</p>
+                            </div>
+                        </td>
+                        <td class="w-30">
+                            <button class="btn btn-info btn-sm" (click)="openparty(party,'view')">View</button>
+                            <button class="btn btn-warning btn-sm" (click)="openparty(party,'edit')">Edit</button>
+                            <button class="btn btn-danger btn-sm" (click)="deleteParty(party.id)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        
+        </div>
+    </div>
+</div>

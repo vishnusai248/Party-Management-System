@@ -1,0 +1,33 @@
+.partyfromdiv{
+    position: relative;
+    .Formtitle{
+      font-size: 20px;
+      text-align: center;
+      font-weight: 500;
+      background-color: #009cf7;
+      color: white;
+      padding: 10px;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+    }
+    .modal-body{
+      margin: 10px;
+    }
+    .form-label{
+      font-weight: 500;
+    }
+    .formaraydiv{
+        box-shadow: inset 0px 0px 2px;
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .eacharraycontainer{
+        background-color: whitesmoke;
+        border-radius: 6px;
+        padding: 10px;
+        border: 1px solid lightgray;
+        margin-block: 5px;
+    }
+  
+  }

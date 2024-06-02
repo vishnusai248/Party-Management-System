@@ -1,0 +1,72 @@
+
+// header styles
+
+.header{
+    position: fixed;
+    top: 0px;
+    height: 60px;
+    width: 100%;
+    background-color: aliceblue;
+    z-index: 1;
+}
+.title{
+    font-weight: 500;
+}
+.hi{
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(56, 55, 55);
+    }
+
+
+#dropdownMenuButton1{
+    background-color: #009cf7 !important;
+    border: none !important;
+}
+li:hover{
+    cursor: pointer;
+
+}
+.exclamation{
+    color: ghostwhite
+}
+// 
+
+//dashbaord styles
+
+.dashboard{
+    margin-top: 60px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  button {
+    margin-right: 5px;
+  }
+  .w-10{
+    width: 10%;
+  }
+  .w-30{
+    width: 30%;
+  }
+  .addbtn{
+    background-color: #9694f3 ;
+  }
+
+
+
+
+  

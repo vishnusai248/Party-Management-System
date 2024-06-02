@@ -1,0 +1,201 @@
+<div class="partyfromdiv">
+    <div class="Formtitle">
+        <h2 class="m-0">{{ editing ? 'Edit Party' : viewing? 'View Party' : 'Add Party' }}</h2>
+
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="partyForm" enctype="multipart/form-data">
+            <div class="input_field">
+                <label class="form-label" for="partyName">Name <span class="required">*</span></label>
+                <input type="text" id="partyName" class="form-control" formControlName="name" required>
+                <div *ngIf="partyForm.get('name')?.invalid && (partyForm.get('name')?.touched || partyForm.get('name')?.dirty)" class="required">
+                    Name is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="companyName">Company Name <span class="required">*</span></label>
+                <input type="text" id="companyName" class="form-control" formControlName="company_name" required>
+                <div *ngIf="partyForm.get('company_name')?.invalid && (partyForm.get('company_name')?.touched || partyForm.get('company_name')?.dirty)" class="required">
+                    Company Name is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" class="form-control" formControlName="email" required>
+                <div *ngIf="partyForm.get('email')?.invalid && (partyForm.get('email')?.touched || partyForm.get('email')?.dirty)" class="required">
+                    <div *ngIf="partyForm.get('email')?.errors?.['required']">Email is required.</div>
+                    <div *ngIf="partyForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="mobileNo">Mobile No <span class="required">*</span></label>
+                <input type="tel" id="mobileNo" class="form-control" formControlName="mobile_no"  (keydown)="numsonly($event)" [maxlength]="10" required >
+                <div *ngIf="partyForm.get('mobile_no')?.invalid && (partyForm.get('mobile_no')?.touched || partyForm.get('mobile_no')?.dirty)" class="required">
+                    Mobile No is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="telephoneNo">Telephone No</label>
+                <input type="tel" id="telephoneNo" class="form-control" formControlName="telephone_no" >
+                
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="whatsappNo">WhatsApp No</label>
+                <input type="tel" id="whatsappNo" class="form-control"  (keydown)="numsonly($event)" [maxlength]="10" formControlName="whatsapp_no" >
+                
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="gstin">GSTIN <span class="required">*</span></label>
+                <input type="text" id="gstin" class="form-control" formControlName="gstin">
+                <div *ngIf="partyForm.get('gstin')?.invalid && (partyForm.get('gstin')?.touched || partyForm.get('gstin')?.dirty)" class="required">
+                    GSTIN is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="panNo">PAN No <span class="required">*</span></label>
+                <input type="text" id="panNo" class="form-control" formControlName="pan_no" required>
+                <div *ngIf="partyForm.get('pan_no')?.invalid && (partyForm.get('pan_no')?.touched || partyForm.get('pan_no')?.dirty)" class="required">
+                    PAN No is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="remark">Remark</label>
+                <textarea id="remark" class="form-control" formControlName="remark" ></textarea>
+                
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="creditLimit">Credit Limit</label>
+                <input type="number" id="creditLimit" class="form-control" formControlName="credit_limit" >
+                
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                <input type="date" id="dateOfBirth" class="form-control" formControlName="date_of_birth" required>
+                <div *ngIf="partyForm.get('date_of_birth')?.invalid && (partyForm.get('date_of_birth')?.touched || partyForm.get('date_of_birth')?.dirty)" class="required">
+                    Date of Birth is required.
+                </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="anniversaryDate">Anniversary Date</label>
+                <input type="date" id="anniversaryDate" class="form-control" formControlName="anniversary_date">
+                
+            </div>
+            <div class="input_field">
+                <label class="form-label">Address</label>
+               
+                <div class="formaraydiv" formArrayName="address">
+                    <div class="eacharraycontainer"  *ngFor="let address of addressarray.controls;let i=index" [formGroupName]="i">
+                        <div class="input_field">
+                            <label class="form-label" for="addressLine1">Address Line 1 <span class="required">*</span></label>
+                            <input type="text" id="addressLine1" class="form-control" formControlName="address_line_1" required>
+                            <div *ngIf="address.get('address_line_1')?.invalid && (address.get('address_line_1')?.touched || address.get('address_line_1')?.dirty)" class="required">
+                                Address Line 1 is required
+                            </div>
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="address_line_2">Address Line 2</label>
+                            <input type="text" id="address_line_2" class="form-control" formControlName="address_line_2">
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="state">State</label>
+                            <input type="text" id="state" class="form-control" formControlName="state">
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="country">Country</label>
+                            <input type="text" id="country" class="form-control" formControlName="country">
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="city">City</label>
+                            <input type="text" id="city" class="form-control" formControlName="city">
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="pincode">Pincode <span class="required">*</span></label>
+                            <input type="text" id="pincode" class="form-control" (keydown)="numsonly($event)" formControlName="pincode" required>
+                            <div *ngIf="address.get('pincode')?.invalid && (address.get('pincode')?.touched || address.get('pincode')?.dirty)" class="required">
+                                Pincode is required
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end" *ngIf="i>0">
+                            <mat-icon class="required" (click)="removeaddress(i)">delete</mat-icon>
+                          </div>
+                    </div>
+                    <button class="btn btn-secondary" (click)="addaddress()">+ Add Address</button>
+
+                    </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="bank">Bank</label>
+                
+
+                <div class="formaraydiv" formArrayName="bank">
+                    <div class="eacharraycontainer"  *ngFor="let bankcontrols of bankarray.controls;let i=index" [formGroupName]="i">
+                        <div class="input_field">
+                            <label class="form-label" for="account_no">Account Number <span class="required">*</span></label>
+                            <input type="text" id="account_no" class="form-control" (keydown)="numsonly($event)" formControlName="account_no" required>
+                            <div *ngIf="bankcontrols.get('account_no')?.invalid && (bankcontrols.get('account_no')?.touched || bankcontrols.get('account_no')?.dirty)" class="required">
+                                Account Number is required
+                            </div>
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="bank_ifsc_code">IFSC Code <span class="required">*</span></label>
+                            <input type="text" id="bank_ifsc_code" class="form-control" formControlName="bank_ifsc_code" required>
+                            <div *ngIf="bankcontrols.get('bank_ifsc_code')?.invalid && (bankcontrols.get('bank_ifsc_code')?.touched || bankcontrols.get('bank_ifsc_code')?.dirty)" class="required">
+                                IFSC Code is required
+                            </div>
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="bank_name">Bank Name </label>
+                            <input type="text" id="bank_name" class="form-control" formControlName="bank_name" >
+                           
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="branch_name">Branch Name</label>
+                            <input type="text" id="branch_name" class="form-control" formControlName="branch_name" >
+                           
+                          </div>
+                          <div class="input_field">
+                            <label class="form-label" for="account_holder_name">Acoount Holder Name</label>
+                            <input type="text" id="account_holder_name" class="form-control" formControlName="account_holder_name" >
+                            
+                          </div>
+
+                          <div class="d-flex justify-content-end" *ngIf="i>0">
+                            <mat-icon class="required" (click)="removebank(i)" >delete</mat-icon>
+                          </div>
+
+                    </div>
+                  
+                    
+                    <button class="btn btn-secondary" (click)="addbankdetails()">+ Add Bank</button>
+
+                  
+                      
+
+                    </div>
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="imageinput">Upload Image</label>
+                <input type="file" accept="image/png,image/jpg" (change)="onFileSelect($event)" id="imageinput" class="form-control"
+                    formControlName="image" >
+            </div>
+            <!--  -->
+            <div class="input_field">
+                <label class="form-label" for="loginaccess">Login Access</label>
+                <input type="checkbox" id="loginaccess" formControlName="login_access">
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="applyTds">Apply TDS</label>
+                <input type="checkbox" id="applyTds" formControlName="apply_tds">
+            </div>
+            <div class="input_field">
+                <label class="form-label" for="isActive">Is Active</label>
+                <input type="checkbox" id="isActive" formControlName="is_active">
+            </div>
+            <div class="text-center" *ngIf="!viewing">
+                <button  type="submit" (click)="saveParty(editing)" class="btn btn-primary">{{ editing ? 'Save Changes' : 'Add Party' }}</button>
+            </div>
+        </form>
+        
+    </div>
+
+</div>
