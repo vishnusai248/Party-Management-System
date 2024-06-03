@@ -22,7 +22,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   label,p,div{
     font-size: clamp(12px, 4vw, 15px);
   }
-  h4,button{
+  h4{
+    font-size: clamp(12px, 4vw , 30px) !important;
+  }
+  button{
     font-size: clamp(12px, 4vw , 15px) !important;
   }
   h1{
